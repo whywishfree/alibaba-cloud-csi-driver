@@ -14,7 +14,7 @@ require (
 	github.com/containerd/ttrpc v1.2.3
 	github.com/emirpasic/gods v1.12.0
 	github.com/go-logr/logr v1.3.0
-	github.com/go-ping/ping v0.0.0-20201022122018-3977ed72668a
+	github.com/go-ping/ping v1.1.0
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.5.9
 	github.com/jarcoal/httpmock v1.3.1
@@ -64,6 +64,7 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/gnostic v0.5.7-v3refs // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/h2non/parth v0.0.0-20190131123155-b4df798d6542 // indirect
 	github.com/imdario/mergo v0.3.7 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
@@ -81,6 +82,7 @@ require (
 	github.com/tjfoc/gmsm v1.3.2 // indirect
 	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/oauth2 v0.7.0 // indirect
+	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/term v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
