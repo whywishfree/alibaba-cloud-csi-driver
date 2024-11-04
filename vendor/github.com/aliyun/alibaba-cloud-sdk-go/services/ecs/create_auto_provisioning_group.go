@@ -111,6 +111,7 @@ type CreateAutoProvisioningGroupRequest struct {
 	LaunchConfigurationInstanceName                string                                                            `position:"Query" name:"LaunchConfiguration.InstanceName"`
 	LaunchConfigurationInstanceDescription         string                                                            `position:"Query" name:"LaunchConfiguration.InstanceDescription"`
 	SpotAllocationStrategy                         string                                                            `position:"Query" name:"SpotAllocationStrategy"`
+	ResourcePoolOptions                            CreateAutoProvisioningGroupResourcePoolOptions                    `position:"Query" name:"ResourcePoolOptions"  type:"Struct"`
 	TerminateInstances                             requests.Boolean                                                  `position:"Query" name:"TerminateInstances"`
 	LaunchConfigurationSystemDiskName              string                                                            `position:"Query" name:"LaunchConfiguration.SystemDiskName"`
 	LaunchConfigurationSystemDiskDescription       string                                                            `position:"Query" name:"LaunchConfiguration.SystemDiskDescription"`
@@ -135,6 +136,7 @@ type CreateAutoProvisioningGroupRequest struct {
 	LaunchConfigurationNetworkInterface            *[]CreateAutoProvisioningGroupLaunchConfigurationNetworkInterface `position:"Query" name:"LaunchConfiguration.NetworkInterface"  type:"Repeated"`
 	ValidFrom                                      string                                                            `position:"Query" name:"ValidFrom"`
 	AutoProvisioningGroupName                      string                                                            `position:"Query" name:"AutoProvisioningGroupName"`
+	LaunchConfigurationAdditionalInfo              CreateAutoProvisioningGroupLaunchConfigurationAdditionalInfo      `position:"Query" name:"LaunchConfiguration.AdditionalInfo"  type:"Struct"`
 }
 
 // CreateAutoProvisioningGroupLaunchConfigurationDataDisk is a repeated param struct in CreateAutoProvisioningGroupRequest
@@ -149,6 +151,9 @@ type CreateAutoProvisioningGroupLaunchConfigurationDataDisk struct {
 	Category           string `name:"Category"`
 	DeleteWithInstance string `name:"DeleteWithInstance"`
 	Encrypted          string `name:"Encrypted"`
+	EncryptAlgorithm   string `name:"EncryptAlgorithm"`
+	ProvisionedIops    string `name:"ProvisionedIops"`
+	BurstingEnabled    string `name:"BurstingEnabled"`
 }
 
 // CreateAutoProvisioningGroupTag is a repeated param struct in CreateAutoProvisioningGroupRequest
@@ -179,6 +184,14 @@ type CreateAutoProvisioningGroupLaunchConfigurationSystemDisk struct {
 	Encrypted        string `name:"Encrypted"`
 	KMSKeyId         string `name:"KMSKeyId"`
 	EncryptAlgorithm string `name:"EncryptAlgorithm"`
+	ProvisionedIops  string `name:"ProvisionedIops"`
+	BurstingEnabled  string `name:"BurstingEnabled"`
+}
+
+// CreateAutoProvisioningGroupResourcePoolOptions is a repeated param struct in CreateAutoProvisioningGroupRequest
+type CreateAutoProvisioningGroupResourcePoolOptions struct {
+	Strategy       string    `name:"Strategy"`
+	PrivatePoolIds *[]string `name:"PrivatePoolIds" type:"Repeated"`
 }
 
 // CreateAutoProvisioningGroupLaunchTemplateConfig is a repeated param struct in CreateAutoProvisioningGroupRequest
@@ -209,6 +222,11 @@ type CreateAutoProvisioningGroupLaunchConfigurationNetworkInterface struct {
 	SecurityGroupId  string    `name:"SecurityGroupId"`
 	SecurityGroupIds *[]string `name:"SecurityGroupIds" type:"Repeated"`
 	InstanceType     string    `name:"InstanceType"`
+}
+
+// CreateAutoProvisioningGroupLaunchConfigurationAdditionalInfo is a repeated param struct in CreateAutoProvisioningGroupRequest
+type CreateAutoProvisioningGroupLaunchConfigurationAdditionalInfo struct {
+	PvdConfig string `name:"PvdConfig"`
 }
 
 // CreateAutoProvisioningGroupLaunchTemplateConfigSecondaryNetworkInterface is a repeated param struct in CreateAutoProvisioningGroupRequest
