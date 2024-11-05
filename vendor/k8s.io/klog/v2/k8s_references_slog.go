@@ -1,3 +1,6 @@
+//go:build go1.21
+// +build go1.21
+
 /*
 Copyright 2021 The Kubernetes Authors.
 
@@ -14,19 +17,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package test
+package klog
 
 import (
-	"github.com/go-logr/logr"
-
-	"k8s.io/klog/v2"
+	"log/slog"
 )
 
-func loggerHelper(logger logr.Logger, msg string, kv []interface{}) {
-	logger = logger.WithCallDepth(1)
-	logger.Info(msg, kv...)
+func (ref ObjectRef) LogValue() slog.Value {
+	if ref.Namespace != "" {
+		return slog.GroupValue(slog.String("name", ref.Name), slog.String("namespace", ref.Namespace))
+	}
+	return slog.GroupValue(slog.String("name", ref.Name))
 }
 
-func klogHelper(level klog.Level, msg string, kv []interface{}) {
-	klog.V(level).InfoSDepth(1, msg, kv...)
+var _ slog.LogValuer = ObjectRef{}
+
+func (ks kobjSlice) LogValue() slog.Value {
+	return slog.AnyValue(ks.MarshalLog())
 }
+
+var _ slog.LogValuer = kobjSlice{}

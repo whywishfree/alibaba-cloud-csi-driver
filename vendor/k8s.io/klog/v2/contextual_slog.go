@@ -1,3 +1,6 @@
+//go:build go1.21
+// +build go1.21
+
 /*
 Copyright 2021 The Kubernetes Authors.
 
@@ -14,19 +17,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package test
+package klog
 
 import (
-	"github.com/go-logr/logr"
+	"log/slog"
 
-	"k8s.io/klog/v2"
+	"github.com/go-logr/logr"
 )
 
-func loggerHelper(logger logr.Logger, msg string, kv []interface{}) {
-	logger = logger.WithCallDepth(1)
-	logger.Info(msg, kv...)
-}
-
-func klogHelper(level klog.Level, msg string, kv []interface{}) {
-	klog.V(level).InfoSDepth(1, msg, kv...)
+// SetSlogLogger reconfigures klog to log through the slog logger. The logger must not be nil.
+func SetSlogLogger(logger *slog.Logger) {
+	SetLoggerWithOptions(logr.FromSlogHandler(logger.Handler()), ContextualLogger(true))
 }

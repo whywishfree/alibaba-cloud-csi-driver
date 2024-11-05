@@ -13,7 +13,7 @@ require (
 	github.com/container-storage-interface/spec v1.10.0
 	github.com/containerd/ttrpc v1.2.3
 	github.com/emirpasic/gods v1.12.0
-	github.com/go-logr/logr v1.3.0
+	github.com/go-logr/logr v1.4.1
 	github.com/go-ping/ping v1.1.0
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.5.9
@@ -35,7 +35,7 @@ require (
 	k8s.io/apimachinery v0.26.12
 	k8s.io/client-go v0.26.12
 	k8s.io/component-base v0.26.12
-	k8s.io/klog/v2 v2.80.1
+	k8s.io/klog/v2 v2.130.1
 	k8s.io/kubelet v0.26.12
 	k8s.io/mount-utils v0.21.1
 	k8s.io/utils v0.0.0-20221107191617-1a15be271d1d
