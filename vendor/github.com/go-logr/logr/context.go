@@ -1,5 +1,5 @@
 /*
-Copyright 2021 The Kubernetes Authors.
+Copyright 2023 The logr Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,19 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package test
+package logr
 
-import (
-	"github.com/go-logr/logr"
+// contextKey is how we find Loggers in a context.Context. With Go < 1.21,
+// the value is always a Logger value. With Go >= 1.21, the value can be a
+// Logger value or a slog.Logger pointer.
+type contextKey struct{}
 
-	"k8s.io/klog/v2"
-)
+// notFoundError exists to carry an IsNotFound method.
+type notFoundError struct{}
 
-func loggerHelper(logger logr.Logger, msg string, kv []interface{}) {
-	logger = logger.WithCallDepth(1)
-	logger.Info(msg, kv...)
+func (notFoundError) Error() string {
+	return "no logr.Logger was present"
 }
 
-func klogHelper(level klog.Level, msg string, kv []interface{}) {
-	klog.V(level).InfoSDepth(1, msg, kv...)
+func (notFoundError) IsNotFound() bool {
+	return true
 }
