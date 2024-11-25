@@ -25,7 +25,7 @@ require (
 	github.com/prometheus/common v0.37.0
 	github.com/prometheus/procfs v0.8.0
 	github.com/sirupsen/logrus v1.9.3
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.10.0
 	go.uber.org/ratelimit v0.1.0
 	golang.org/x/sys v0.18.0
 	google.golang.org/grpc v1.57.1
